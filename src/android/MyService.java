@@ -31,19 +31,26 @@ public class MyService extends BackgroundService {
 			String msg = "Hello " + this.mHelloTo + " - its currently " + now;
 
 			//获取NotificationManager实例
-			NotificationManager notifyManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+			NotificationManager notifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+			Notification noti = new Notification.Builder(this)
+				.setContentTitle("最简单的Notification")
+				.setContentText(msg)
+				.setSmallIcon(R.drawable.sym_def_app_icon)
+				.build();
+
 			//实例化NotificationCompat.Builde并设置相关属性
-			Notification.Builder builder = new Notification.Builder(this)
-							//设置小图标
-							.setSmallIcon(R.mipmap.sym_def_app_icon)
-							//设置通知标题
-							.setContentTitle("最简单的Notification")
-							//设置通知内容
-							.setContentText(msg);
-							//设置通知时间，默认为系统发出通知的时间，通常不用设置
+			// Notification.Builder builder = new Notification.Builder(this)
+			// 				//设置小图标
+			// 				// .setSmallIcon(R.mipmap.sym_def_app_icon)
+			// 				//设置通知标题
+			// 				.setContentTitle("最简单的Notification")
+			// 				//设置通知内容
+			// 				.setContentText(msg);
+			// 				//设置通知时间，默认为系统发出通知的时间，通常不用设置
 							//.setWhen(System.currentTimeMillis());
 			//通过builder.build()方法生成Notification对象,并发送通知,id=1
-			notifyManager.notify(1, builder.build());
+			notifyManager.notify(1, noti);
 
 			result.put("Message", msg);
 
