@@ -36,7 +36,7 @@ public class MyService extends BackgroundService {
 			Notification noti = new Notification.Builder(this)
 				.setContentTitle("最简单的Notification")
 				.setContentText(msg)
-				.setSmallIcon(R.drawable.sym_def_app_icon)
+				.setSmallIcon(R.drawable.new_mail)
 				.build();
 
 			//实例化NotificationCompat.Builde并设置相关属性
